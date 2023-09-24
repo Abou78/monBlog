@@ -9,7 +9,7 @@ class MainController{
         echo $twig->render('home/index.html.twig', array());
     }
 
-    public function articles(){
-        return 'Page d\'articles';
+    public function articles($twig){
+        echo $twig->render('home/index.html.twig', array());
     }
 }

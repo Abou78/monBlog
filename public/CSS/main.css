@@ -1,0 +1,13 @@
+body{
+    font-family: 'Fredoka One', cursive;
+    background-color: rgb(40,54,69);
+}
+
+.maPhoto{
+    width: 140px;
+    height: 140px;
+}
+
+a{
+    color: white;
+}
