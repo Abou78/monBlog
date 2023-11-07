@@ -2,11 +2,14 @@
 
 namespace Controllers;
 
+use Models\Article;
+use Repository\ArticleRepository;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mime\Email;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+
+
 
 class MainController{
 
@@ -42,6 +45,18 @@ class MainController{
         }
 
     public function articles($twig){
-        echo $twig->render('home.html.twig', array());
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $article = new Article;
+            $article->setTitle($_POST['title']);
+            $article->setChapo($_POST['chapo']);
+            $article->setContent($_POST['content']);
+
+            $articleRepository = new ArticleRepository;
+            $articleRepository->article($article);
+            var_dump($article);
+        }
+
+        echo $twig->render('article.html.twig', array());
     }
+
 }
