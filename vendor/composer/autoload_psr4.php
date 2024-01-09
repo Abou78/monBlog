@@ -24,10 +24,10 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\EventDispatcher\\' => array($vendorDir . '/psr/event-dispatcher/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
-    'Models\\' => array($baseDir . '/Models'),
-    'Exceptions\\' => array($baseDir . '/Exceptions'),
+    'Exception\\' => array($baseDir . '/Exception'),
+    'Entity\\' => array($baseDir . '/Entity'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Doctrine\\Deprecations\\' => array($vendorDir . '/doctrine/deprecations/lib/Doctrine/Deprecations'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/src'),
-    'Controllers\\' => array($baseDir . '/Controllers'),
+    'Controller\\' => array($baseDir . '/Controller'),
 );

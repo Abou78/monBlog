@@ -2,17 +2,12 @@
 
 namespace Router;
 
-use Exceptions\RouteNotFoundException;
+use Exception\RouteNotFoundException;
+use Twig\Environment;
 
 class Router
 {
     private array $routes;
-    private $twig;
-
-    public function __construct($twig)
-    {
-        $this->twig = $twig;
-    }
 
     public function register(string $path, array $action): void
     {
@@ -25,16 +20,15 @@ class Router
 
         $action = $this->routes[$path] ?? null;
 
-        if(is_array($action)){
+        if (is_array($action)) {
             [$className, $method] = $action;
 
             if(class_exists($className) && method_exists($className, $method)){
                 $class = new $className();
                 
-                return call_user_func_array([$class, $method], [$this->twig]);
+                return call_user_func_array([$class, $method], []);
             }
-        }
-      
+        } 
         throw new RouteNotFoundException();
     }
 }
