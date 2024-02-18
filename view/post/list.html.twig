@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} | articles{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class=" border-bottom border-white m-5 p-3">Pages des articles</h1>
+        </div>
+    </div>
+
+    {# Display all articles #}
+    <div class="row no-gutters align-items-center">
+        {% for article in articles %}
+            <div class="col-12 col-lg-6">
+                <ul>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{article.title}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Modifié le : {{ article.dateUpdate|date("d/m/Y") }}</h6>
+                            <p class="card-text">{{article.chapo}}</p>
+                            <a href="/article?id={{article.id}}" class="card-link btn btn-primary">Lire l'article</a>
+                        </div> 
+                    </div>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

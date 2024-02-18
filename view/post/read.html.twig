@@ -1,0 +1,83 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} | article{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 text-center">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">l'article n'a pas été supprimé !</div>
+            {% endif %}
+            <h1 class=" border-bottom border-white m-5 p-3">{{ article.title }}</h1>
+        </div>
+    </div>
+
+    {# Display article #}
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    {% if app.session['userType'] == "admin" %}
+                        <div class="text-end">
+                            <a href="/article/update?id={{article.id}}" class="card-link">
+                                <i class="fa-solid fa-pen-to-square text-dark"></i>
+                            </a>
+                            
+                            <a href="/article/delete?id={{article.id}}" class="card-link">
+                                <i class="fa-solid fa-trash text-dark"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    <div>
+                        <p>fait par : {{article.first_name}} {{article.last_name}}</p>
+                        <p>le : {{ article.date_update|date("d/m/Y") }}</p>
+                    </div>
+
+                    <div>
+                        <p>{{article.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Display all comments #}
+        <div class="col-12">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <div>
+                        <h2 class="text-center">les commentaires :</h2>
+                    </div>
+
+                    <div>
+                        {% for comment in comments %}
+                            <div class="col-12">
+                                <ul>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{comment.comment}}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Fait le : {{ comment.dateCreation|date("d/m/Y") }}</h6>
+                                        </div> 
+                                    </div>
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {# Display form for comment #}
+                    <div>
+                        <form action="/article/addComment?id={{article.id}}" method="post">
+                            <div class="form-group mb-3">
+                                <label for="comment"></label>
+                                <textarea class="form-control" name="comment" id="comment" cols="30" rows="3" placeholder="Votre commentaire ?"></textarea>
+                            </div>
+                            <div class="row no-guters mb-3">
+                                <input type="submit" value="Valider" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} | administration{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class=" border-bottom border-white m-5 p-3">Administration</h1>
+        </div>
+    </div>
+
+    {# Display the number to validate #}
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <button type="button" class="btn btn-primary">
+                le nombre de commentaire à valider est : <span class="badge text-bg-secondary">{{ commentToValidate }}</span>
+            </button>  
+        </div> 
+    </div>
+
+    <div>
+        {% for comment in comments %}
+            <div class="col-12">
+                <ul>
+                    <div class="card">
+                        <div class="card-body">
+                            {% if app.session['userType'] == "admin" %}
+                                <div class="text-end">
+                                    <a href="/administration/update?id={{comment.id}}" class="card-link">
+                                        <i class="fa-solid fa-pen-to-square text-dark"></i>
+                                    </a>
+                                </div>
+                            {% endif %}
+                            <h5 class="card-title">{{comment.comment}}</h5>
+                            <h6 class="card-subtitle text-muted">Fait le : {{ comment.dateCreation|date("d/m/Y") }}</h6>
+                        </div> 
+                    </div>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

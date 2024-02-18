@@ -19,7 +19,9 @@
             "Controller\\": "Controller/",
             "Source\\": "src/",
             "Repository\\": "Repository/",
-            "Entity\\": "Entity/"
+            "Entity\\": "Entity/",
+            "Enum\\": "Enum/",
+            "Services\\": "Services/"
         }
     }
 }

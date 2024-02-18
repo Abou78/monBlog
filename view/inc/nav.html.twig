@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                </li>
+
+                {% if app.session['userType'] == "admin" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="articles">Articles</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="listArticles">Listes d'articles</a>
+                </li>
+
+                {% if app.session['userId'] is defined %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Se déconnecter</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Se connecter</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="registration">S'inscrire</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
