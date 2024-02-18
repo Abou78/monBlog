@@ -35,6 +35,7 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Source\\' => 7,
+            'Services\\' => 9,
         ),
         'R' => 
         array (
@@ -50,6 +51,7 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
         'E' => 
         array (
             'Exception\\' => 10,
+            'Enum\\' => 5,
             'Entity\\' => 7,
             'Egulias\\EmailValidator\\' => 23,
         ),
@@ -117,6 +119,10 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Services\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Services',
+        ),
         'Router\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Router',
@@ -140,6 +146,10 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
         'Exception\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Exception',
+        ),
+        'Enum\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Enum',
         ),
         'Entity\\' => 
         array (
