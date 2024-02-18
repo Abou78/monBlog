@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="text-center text-white p-3">
+            <div>&copy; {{ "now"|date("Y") }} Abou Diallo - Développeur web PHP/Symfony
+                {% if app.session['userType'] == "admin" %}
+                    <a href="administration">- Administration</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

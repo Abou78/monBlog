@@ -3,7 +3,6 @@
 namespace Router;
 
 use Exception\RouteNotFoundException;
-use Twig\Environment;
 
 class Router
 {

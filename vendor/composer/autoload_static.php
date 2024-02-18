@@ -47,13 +47,10 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
         ),
-        'M' => 
-        array (
-            'Models\\' => 7,
-        ),
         'E' => 
         array (
-            'Exceptions\\' => 11,
+            'Exception\\' => 10,
+            'Entity\\' => 7,
             'Egulias\\EmailValidator\\' => 23,
         ),
         'D' => 
@@ -63,7 +60,7 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
         ),
         'C' => 
         array (
-            'Controllers\\' => 12,
+            'Controller\\' => 11,
         ),
     );
 
@@ -140,13 +137,13 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'Models\\' => 
+        'Exception\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Models',
+            0 => __DIR__ . '/../..' . '/Exception',
         ),
-        'Exceptions\\' => 
+        'Entity\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Exceptions',
+            0 => __DIR__ . '/../..' . '/Entity',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -160,9 +157,9 @@ class ComposerStaticInita23c9e6f7b4feb04060289ab21d7a90b
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/src',
         ),
-        'Controllers\\' => 
+        'Controller\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Controllers',
+            0 => __DIR__ . '/../..' . '/Controller',
         ),
     );
 
