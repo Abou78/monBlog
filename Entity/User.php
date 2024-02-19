@@ -4,21 +4,33 @@ namespace Entity;
 
 class User
 {
+
     private int $id;
+
     private ?string $firstName = null;
+
     private ?string $lastName = null;
+
     private ?string $description = null;
+
     private ?string $pathToCv = null;
+
     private ?string $email = null;
+
     private ?string $password = null;
+
     private ?\DateTime $dateCreation = null;
+
     private ?\DateTime $dateUpdate = null;
+
     private ?string $type = null;
+
 
     public function getId(): int
     {
         return $this->id;
     }
+
 
     public function setId(int $id): self
     {
@@ -27,10 +39,12 @@ class User
         return $this;
     }
 
+
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
+
 
     public function setFirstName(?string $firstName): self
     {
@@ -39,10 +53,12 @@ class User
         return $this;
     }
 
+
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
+
 
     public function setLastName(?string $lastName): self
     {
@@ -51,10 +67,12 @@ class User
         return $this;
     }
 
+
     public function getDescription(): ?string
     {
         return $this->description;
     }
+
 
     public function setDescription(?string $description): self
     {
@@ -63,10 +81,12 @@ class User
         return $this;
     }
 
+
     public function getPathToCv(): ?string
     {
         return $this->pathToCv;
     }
+
 
     public function setPathToCv(?string $pathToCv): self
     {
@@ -74,6 +94,7 @@ class User
 
         return $this;
     }
+
 
     public function getEmail(): ?string
     {
@@ -86,6 +107,7 @@ class User
 
         return $this;
     }
+
  
     public function getPassword(): ?string
     {
@@ -99,10 +121,12 @@ class User
         return $this;
     }
 
+
     public function getDateCreation(): \DateTime
     {
         return $this->dateCreation;
     }
+
 
     public function setDateCreation(?\DateTime $dateCreation): self
     {
@@ -111,10 +135,12 @@ class User
         return $this;
     }
 
+
     public function getDateUpdate(): ?\DateTime
     {
         return $this->dateUpdate;
     }
+
 
     public function setDateUpdate(?\DateTime $dateUpdate): self
     {
@@ -123,10 +149,12 @@ class User
         return $this;
     }
 
+
     public function getType(): ?string
     {
         return $this->type;
     }
+
 
     public function setType(?string $type): self
     {
@@ -134,4 +162,5 @@ class User
 
         return $this;
     }
+    
 }

@@ -8,17 +8,21 @@ use Symfony\Component\Mailer\Transport;
 
 class HomeController extends BaseController
 {
+
+
     public function home()
     {
+
         $success = '';
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            //Retrieve form data 
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve form data 
             $lastname = $_POST['lastname'];
             $firstname = $_POST['firstname'];
             $email = $_POST['email'];
             $message = $_POST['message'];
 
-            //Configure transportation
+            // Configure transportation
             $transport = Transport::fromDsn('smtp://localhost:1025');
 
             $mailer = new Mailer($transport);
@@ -26,18 +30,17 @@ class HomeController extends BaseController
             $email = (new Email())
                 ->from($email)
                 ->to('abou.diallo78@gmail.com')
-                ->subject('Nouveau message de ' . $lastname . $firstname)
+                ->subject('Nouveau message de '.$lastname.$firstname)
                 ->text($message);
 
             $mailer->send($email);
 
             $success = 'Formulaire soumis avec succès';
-            echo $this->render('home.html.twig', [
-                'success' => $success,
-            ]);
+            echo $this->render('home.html.twig', ['success' => $success]);
+        } else {
+            echo $this->render('home.html.twig');
+        } //end if().
 
-        }else{
-                echo $this->render('home.html.twig', array());
-            }
-    }
+    } //end home().
+
 }

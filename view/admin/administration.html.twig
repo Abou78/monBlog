@@ -3,6 +3,7 @@
 {% block title %}{{ parent() }} | administration{% endblock %}
 
 {% block body %}
+
     <div class="row">
         <div class="col-12 text-center">
             <h1 class=" border-bottom border-white m-5 p-3">Administration</h1>
@@ -18,6 +19,12 @@
         </div> 
     </div>
 
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class=" border-bottom border-white m-5 p-3">Liste des commentaires à valider</h2>
+        </div>
+    </div>
+
     <div>
         {% for comment in comments %}
             <div class="col-12">
@@ -27,7 +34,7 @@
                             {% if app.session['userType'] == "admin" %}
                                 <div class="text-end">
                                     <a href="/administration/update?id={{comment.id}}" class="card-link">
-                                        <i class="fa-solid fa-pen-to-square text-dark"></i>
+                                        <i class="fa-solid fa-check text-dark"></i>
                                     </a>
                                 </div>
                             {% endif %}

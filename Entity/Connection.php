@@ -4,6 +4,7 @@ namespace Entity;
 
 abstract class Connection
 {
+
     private static $pdo;
 
     private static function setConnection(): void
@@ -12,11 +13,14 @@ abstract class Connection
         self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
     }
 
+
     protected function getConnection(): mixed
     {
         if(self::$pdo === null){
             self::setConnection();
-        }
+        } //end if().
+
         return self::$pdo;
     }
+
 }

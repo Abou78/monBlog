@@ -4,16 +4,23 @@ namespace Entity;
 
 class Media
 {
+
     private int $id;
+
     private string $description;
+
     private string $pathMedia;
+
     private \DateTime $dateCreation;
+
     private \DateTime $dateUpdate;
+
 
     public function getId(): string
     {
         return $this->id;
     }
+
 
     public function setId(int $id): self
     {
@@ -22,10 +29,12 @@ class Media
         return $this;
     }
 
+
     public function getDescription(): string
     {
         return $this->description;
     }
+
 
     public function setDescription(string $description): self
     {
@@ -34,10 +43,12 @@ class Media
         return $this;
     }
 
+
     public function getPathMedia(): string
     {
         return $this->pathMedia;
     }
+
 
     public function setPathMedia($pathMedia): self
     {
@@ -46,10 +57,12 @@ class Media
         return $this;
     }
 
+
     public function getDateCreation(): \DateTime
     {
         return $this->dateCreation;
     }
+
 
     public function setDateCreation($dateCreation): self
     {
@@ -58,10 +71,12 @@ class Media
         return $this;
     }
 
+
     public function getDateUpdate(): \DateTime
     {
         return $this->dateUpdate;
     }
+
 
     public function setDateUpdate($dateUpdate): self
     {
@@ -69,4 +84,5 @@ class Media
 
         return $this;
     }
+    
 }
