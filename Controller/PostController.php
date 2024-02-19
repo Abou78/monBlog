@@ -13,20 +13,26 @@ use Exception\RouteNotAuthorizedException;
 
 final class PostController extends BaseController
 {
+
     private PostRepository $postRepository;
     private UserRouteValidator $userRouteValidator;
 
+
     public function __construct()
     {
+
         $this->postRepository = new PostRepository();
         $this->userRouteValidator = new UserRouteValidator();
-    }
+
+    } //end __construct().
+
 
     public function create(): string
     {
+
         if (!$this->userRouteValidator->isUserAdmin()) {
             throw new RouteNotAuthorizedException();
-        }
+        } //end if().
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = new Article;
@@ -39,19 +45,22 @@ final class PostController extends BaseController
                 $this->postRepository->create($article, $_SESSION['userId']);
 
                 header('location: http://monblog/listArticles');
-            } catch( PDOException $Exception ) {
+            } catch ( PDOException $Exception ) {
                 $error = true;
             }    
-        }
+        } //end if().
 
         return $this->render('post/create.html.twig', [
             "error" => $error ?? false,
         ]);
-    }
+
+    } //end create().
+
 
     public function list(): string
     {
-        $articles =[];
+
+        $articles = [];
 
         try {
             foreach($this->postRepository->list() as $article) {
@@ -62,18 +71,21 @@ final class PostController extends BaseController
     
                 if(!empty($article['date_update'])){
                     $articleObject->setDateUpdate(new \DateTime($article['date_update']));
-                }
+                } //end if().
     
                 $articles[] = $articleObject;
-            }
+            } //end foreach().
         } catch (\PDOException $exception) {
-            // todo : ajouter la logique d'erreur
+            $errorMessage = 'Les articles n\'ont pas été ajoutés.';
         }
 
         return $this->render('post/list.html.twig', [
-            "articles" =>  $articles,
+            "articles" => $articles,
+            'errorMessage' => $errorMessage ?? '',
         ]);
-    }
+
+    } //end list().
+
 
     public function read(): string
     {
@@ -81,13 +93,12 @@ final class PostController extends BaseController
 
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
-        }
-
-        // Récupérer dans l'URL la variable error si elle existe 
+        } //end if().
 
         if ($postId === null) {
-            //afficher une erreur dans la vue
-        }
+            $error = $_GET['error'];
+        } //end if().
+
         $articleObject = new Article();
 
         $article = $this->postRepository->read($postId);
@@ -97,62 +108,63 @@ final class PostController extends BaseController
         $articleObject->setChapo($article['chapo']);
         $articleObject->setContent($article['content']);
 
-        if(!empty($article['date_update'])){
+        if (!empty($article['date_update'])) {
             $articleObject->setDateUpdate(new \DateTime($article['date_update']));
-        }
+        } //end if().
 
         $commentRepository = new CommentRepository();
         $comments = [];
 
-        foreach($commentRepository->list($postId) as $comment) {
+        foreach ($commentRepository->list($postId) as $comment) {
             $commentObject = new Comment();
             $commentObject->setId($comment['id']);
             $commentObject->setComment($comment['comment']);
             $commentObject->setDateCreation(new \DateTime($comment['date_creation']));
 
             $comments[] = $commentObject;
-        }
+        } // end foreach().
 
         return $this->render('post/read.html.twig', [
             "article" => $article,
             "comments" => $comments,
             "error" => $error ?? false,
         ]);
-    }
+
+    } //end read().
+
 
     public function delete(): void
     {
         if (!$this->userRouteValidator->isUserAdmin()) {
             throw new RouteNotAuthorizedException();
-        }
+        } //end if().
 
         $postId = $_GET['id'];
 
-        if (!$postId) {
-            // todo : afficher une erreur dans la vue
-        }
-
         try {
             $this->postRepository->delete($postId);
-        } catch(\PDOException $exception) {
+        } catch (\PDOException $exception) {
             header('location: http://monblog/article?error=1');
 
         }
 
         header('location: http://monblog/listArticles');
-    }
+
+    } //end delete().
+
 
     public function update(): string
     {
+
         if (!$this->userRouteValidator->isUserAdmin()) {
             throw new RouteNotAuthorizedException();
-        }
+        } //end if()
         
         $postId = $_GET['id'];
 
         if ($postId === null) {
-            //afficher une erreur dans la vue
-        }
+            $errorMessage = 'Erreur ! l\'identifiant est introuvable.';
+        } //end if()
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = new Article;
@@ -165,16 +177,19 @@ final class PostController extends BaseController
             try {
                 $error = false;
                 $this->postRepository->update($article, $_SESSION['userId']);
-            } catch( PDOException $Exception ) {
+            } catch ( PDOException $Exception ) {
                 $error = true;
             }
 
             header('location: http://monblog/listArticles');
-        }
+        } //end if()
 
         return $this->render('post/update.html.twig', [
             'article' => $this->postRepository->read($postId),
-            'error' => $error,
+            "error" => $error ?? false,
+            'errorMessage' => $errorMessage ?? '',
         ]);
-    }
+
+    } //end update().
+
 }

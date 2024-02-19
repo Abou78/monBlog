@@ -11,15 +11,21 @@ use Enum\UserTypeEnum;
 
 final class UserController extends BaseController
 {
+
     private UserRepository $userRepository;
+
 
     public function __construct()
     {
+
         $this->userRepository = new UserRepository();
-    }
+
+    } //end__construct().
+
 
     public function login(): string
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
             $user = new User();
@@ -30,36 +36,38 @@ final class UserController extends BaseController
 
             if (!password_verify($user->getPassword(), $connectedUser['password'])) {
                 throw new Exception('Erreur ! les identifiants sont incorrects.');
-            }
+            } //end if().
 
             $_SESSION['userId'] = $connectedUser['id'];
             $_SESSION['userType'] = $connectedUser['type'];
             $_SESSION['userFirstName'] = $connectedUser['first_name'];
             $_SESSION['userLastName'] = $connectedUser['last_name'];
-            $_SESSION['userType'] = $connectedUser['type'];
-
-            } catch(PDOException $exception ) {
+            } catch (PDOException $exception ) {
                 $errorMessage = '';
-            } catch(\Exception $exception) {
+            } catch (\Exception $exception) {
                 $errorMessage = 'Erreur ! l\'email ou le mot de passe est incorrect.';
             }
-        }
+         } //end if().
+
         return $this->render('user/login.html.twig', [
             'errorMessage' => $errorMessage ?? '',
         ]);
     }
 
+
     public function registration(): string
     {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {    
-                try {
-                    if($_POST['password'] !== $_POST['validPassword']){
-                        throw new Exception('Erreur ! Les deux mots de passe ne correspondent pas.');
-                    }
 
-                    if($this->userRepository->isAlreadyEmailExist($_POST['email']) > 0) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+
+                try {
+                    if ($_POST['password'] !== $_POST['validPassword']) {
+                        throw new Exception('Erreur ! Les deux mots de passe ne correspondent pas.');
+                    } //end if().
+
+                    if ($this->userRepository->isAlreadyEmailExist($_POST['email']) > 0) {
                         throw new Exception('Désolé ! l\'email existe déjà. Veuillez en choisir un autre.');
-                    }
+                    } //end if().
 
                     $user = new User();
                     $user->setFirstName($_POST['firstName']);
@@ -74,24 +82,25 @@ final class UserController extends BaseController
 
                     header('location: http://monblog/listArticles');
 
-                } catch(PDOException $exception ) {
+                } catch (PDOException $exception ) {
                     $errorMessage = '';
                     
-                } catch(\Exception $exception) {
-                    // Afficher un message d'erreur
-                    $errorMessage = $exception->getMessage();
+                } catch (\Exception $exception) {
+                    $errorMessage = 'Erreur ! l\'utilisateur n\'a pas été ajouté.';
                 }   
             }
 
             return $this->render('user/registration.html.twig', [
-                'errorMessage' => $errorMessage ?? null,
+                'errorMessage' => $errorMessage ?? '',
             ]); 
-    }
+    } //end registration().
+
 
     public function logout(): void
     {
         session_destroy();
 
         header('location: http://monblog/');
-    }
+    } //end logout().
+
 }

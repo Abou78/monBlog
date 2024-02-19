@@ -4,17 +4,25 @@ namespace Entity;
 
 class Comment
 {
+
     private int $id;
+
     private ?string $comment = null;
+
     private ?bool $isValid = null;
+
     private ?\DateTime $dateCreation = null;
+
     private ?int $articleId = null;
+
     private ?int $userId = null;
+
 
     public function getId(): int
     {
         return $this->id;
     }
+
 
     public function setId(int $id): self
     {
@@ -23,10 +31,12 @@ class Comment
         return $this;
     }
 
+
     public function getComment(): ?string
     {
         return $this->comment;
     }
+
 
     public function setComment(?string $comment): self
     {
@@ -35,10 +45,12 @@ class Comment
         return $this;
     }
 
+
     public function getIsValid(): ?bool
     {
         return $this->isValid;
     }
+
 
     public function setIsValid(?bool $isValid): self
     {
@@ -47,10 +59,12 @@ class Comment
         return $this;
     }
 
+
     public function getDateCreation(): ?\DateTime
     {
         return $this->dateCreation;
     }
+
 
     public function setDateCreation(?\DateTime $dateCreation): self
     {
@@ -59,10 +73,12 @@ class Comment
         return $this;
     }
 
+
     public function getArticleId(): ?int
     {
         return $this->articleId;
     }
+
 
     public function setArticleId($articleId): self
     {
@@ -71,10 +87,12 @@ class Comment
         return $this;
     }
 
+
     public function getUserId(): ?int
     {
         return $this->userId;
     }
+
 
     public function setUserId($userId): self
     {
@@ -82,4 +100,5 @@ class Comment
 
         return $this;
     }
+    
 }
