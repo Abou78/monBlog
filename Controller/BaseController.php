@@ -9,7 +9,7 @@ use Twig\Loader\FilesystemLoader;
 class BaseController
 {
 
-
+    
     public function render(string $template, ?array $variables= []): string
     {
 

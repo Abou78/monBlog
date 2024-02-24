@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use PDOException;
 use Entity\Comment;
 use Controller\BaseController;
 use Repository\AdminRepository;
@@ -22,8 +21,13 @@ final class AdminController extends BaseController
         $this->userRouteValidator = new UserRouteValidator();
 
     } //end __construct().
+    
 
-
+    /**
+     * List comment to validate.
+     * 
+     * @string
+     */
     public function administration(): string
     {
 
