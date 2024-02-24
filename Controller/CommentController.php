@@ -18,8 +18,13 @@ final class CommentController extends BaseController
         $this->commentRepository = new CommentRepository();
 
     } //end __construct().
+    
 
-
+    /**
+     * Create comment.
+     * 
+     * @void
+     */
     public function create(): void
     {
 

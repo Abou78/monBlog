@@ -10,6 +10,10 @@ class HomeController extends BaseController
 {
 
 
+    /**
+     * Show contact form.
+     * 
+     */
     public function home()
     {
 

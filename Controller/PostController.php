@@ -27,6 +27,11 @@ final class PostController extends BaseController
     } //end __construct().
 
 
+    /**
+     * Create a post.
+     * 
+     * @string
+     */
     public function create(): string
     {
 
@@ -57,6 +62,11 @@ final class PostController extends BaseController
     } //end create().
 
 
+    /**
+     * List all posts.
+     * 
+     * @string
+     */
     public function list(): string
     {
 
@@ -87,6 +97,11 @@ final class PostController extends BaseController
     } //end list().
 
 
+    /**
+     * List a post.
+     * 
+     * @string
+     */
     public function read(): string
     {
         $postId = $_GET['id'];
@@ -133,6 +148,11 @@ final class PostController extends BaseController
     } //end read().
 
 
+    /**
+     * Delete a post.
+     * 
+     * @void
+     */
     public function delete(): void
     {
         if (!$this->userRouteValidator->isUserAdmin()) {
@@ -153,6 +173,11 @@ final class PostController extends BaseController
     } //end delete().
 
 
+    /**
+     * Update a post.
+     * 
+     * @string
+     */
     public function update(): string
     {
 

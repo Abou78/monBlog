@@ -23,6 +23,11 @@ final class UserController extends BaseController
     } //end__construct().
 
 
+    /**
+     * Login to user
+     * 
+     * @string
+     */
     public function login(): string
     {
 
@@ -55,6 +60,11 @@ final class UserController extends BaseController
     }
 
 
+    /**
+     * Register a user.
+     * 
+     * @string
+     */
     public function registration(): string
     {
 
@@ -96,6 +106,11 @@ final class UserController extends BaseController
     } //end registration().
 
 
+    /**
+     * Logout a user
+     * 
+     * @void
+     */
     public function logout(): void
     {
         session_destroy();
