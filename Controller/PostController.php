@@ -68,6 +68,7 @@ final class PostController extends BaseController
                 $articleObject->setId($article['id']);
                 $articleObject->setTitle($article['title']);
                 $articleObject->setChapo($article['chapo']);
+                $articleObject->setDateCreation(new \DateTime($article['date_creation']));
     
                 if(!empty($article['date_update'])){
                     $articleObject->setDateUpdate(new \DateTime($article['date_update']));

@@ -65,17 +65,19 @@
                     </div>
 
                     {# Display form for comment #}
-                    <div>
-                        <form action="/article/addComment?id={{article.id}}" method="post">
-                            <div class="form-group mb-3">
-                                <label for="comment"></label>
-                                <textarea class="form-control" name="comment" id="comment" cols="30" rows="3" placeholder="Votre commentaire ?"></textarea>
-                            </div>
-                            <div class="row no-guters mb-3">
-                                <input type="submit" value="Valider" class="btn btn-primary">
-                            </div>
-                        </form>
-                    </div>
+                    {% if app.session['userId'] is defined %}
+                        <div>
+                            <form action="/article/addComment?id={{article.id}}" method="post">
+                                <div class="form-group mb-3">
+                                    <label for="comment"></label>
+                                    <textarea class="form-control" name="comment" id="comment" cols="30" rows="3" placeholder="Votre commentaire ?"></textarea>
+                                </div>
+                                <div class="row no-guters mb-3">
+                                    <input type="submit" value="Valider" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
